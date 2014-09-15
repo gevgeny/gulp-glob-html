@@ -21,6 +21,7 @@ gulp.task('default', function () {
         .pipe(globhtml())
         .pipe(gulp.dest('./temp'));
 });
+```
 
 #### Before gulp-glob-html:
  
