@@ -9,20 +9,6 @@
 npm install --save-dev gulp-glob-html
 ```
 
-## Examples
-
-```js
-
-var gulp = require('gulp'),
-    globhtml = require('gulp-glob-html');
-
-gulp.task('default', function () {
-    return gulp.src('./templates/**/*.html')
-        .pipe(globhtml())
-        .pipe(gulp.dest('./temp'));
-});
-```
-
 #### Before gulp-glob-html:
  
 ```html
@@ -42,7 +28,7 @@ gulp.task('default', function () {
 </html>
 ```
 
-After gulp-glob-html
+####After gulp-glob-html
 
 ```html
 <!DOCTYPE html>
@@ -63,6 +49,20 @@ After gulp-glob-html
     <p>glob-html example</p>
 </body>
 </html>
+```
+
+## Examples
+
+```js
+
+var gulp = require('gulp'),
+    globhtml = require('gulp-glob-html');
+
+gulp.task('default', function () {
+    return gulp.src('./templates/**/*.html')
+        .pipe(globhtml())
+        .pipe(gulp.dest('./temp'));
+});
 ```
 
 ## License
