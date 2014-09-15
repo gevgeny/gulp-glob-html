@@ -23,7 +23,7 @@ gulp.task('default', function () {
 });
 
 #### Before gulp-glob-html:
-
+ 
 ```html
 <!DOCTYPE html>
 <html>
