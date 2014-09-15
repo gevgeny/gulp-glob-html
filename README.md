@@ -8,9 +8,9 @@
 ```
 npm install --save-dev gulp-glob-html
 ```
+## Information
 
-With gulp-glob-html you can use glob functionality in your html templates:
- 
+With `gulp-glob-html` you can use [glob](https://github.com/isaacs/node-glob) functionality in your html templates:
 ```html
 <!DOCTYPE html>
 <html>
@@ -29,7 +29,6 @@ With gulp-glob-html you can use glob functionality in your html templates:
 ```
 
 and receive the template with matched css and js entries:
-
 ```html
 <!DOCTYPE html>
 <html>
