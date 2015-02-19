@@ -12,15 +12,19 @@ var cheerio = require('cheerio'),
  * @param {object} $element Element with glob.
  * @param {string} attr Resource attr. (src, href).
  * @param {string} base Base directory to search in.
+ * @param {object} opts Options
  * @return {Array<object>} matched values.
  * */
-var expandElement = function ($element, attr, base) {
+var expandElement = function ($element, attr, base, opts) {
     var path = $element.attr(attr),
         expandedPaths = glob.sync(path, { cwd : base });
 
     //grunt.log.writeln('Expand ' + path.cyan + ' to ' + expandedPaths.length.toString().cyan + ' files');
 
     return expandedPaths.map(function (path) {
+        if (typeof opts.basePath === 'string' && path.indexOf(opts.basePath) === 0) {
+            path = path.substring(opts.basePath.length);
+        }
         return $element.clone().attr(attr, path).toString();
     });
 };
@@ -64,7 +68,7 @@ var fetchIndent = function ($element) {
     return '\n' + indent;
 };
 
-var processFile = function (content, base) {
+var processFile = function (content, base, opts) {
     var $ = cheerio.load(content),
         $elements = $('script,link'),
         noElementsFound = true;
@@ -80,7 +84,7 @@ var processFile = function (content, base) {
         indent = fetchIndent($element);
 
         // Expand initial script to matched ones.
-        expandElement($element, attr, base).forEach(function (element, i) {
+        expandElement($element, attr, base, opts).forEach(function (element, i) {
             if (i === 0) {
                 $element.before(element);
             } else {
