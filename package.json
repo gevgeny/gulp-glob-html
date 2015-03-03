@@ -1,7 +1,7 @@
 {
     "name": "gulp-glob-html",
     "description": "Add globbing to your HTML",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "homepage": "https://github.com/gevgeny/gulp-glob-html",
     "author": {
         "name": "Eugene Gluhotorenko",
