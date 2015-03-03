@@ -2,8 +2,9 @@ var through = require('through2'),
     gutil = require('gulp-util'),
     globhtml = require('./glob-html');
 
-module.exports = function () {
+module.exports = function (options) {
     return through.obj(function (file, enc, cb) {
+        var opts = options ? options : {};
         var content;
 
         if (file.isStream()) {
@@ -11,8 +12,8 @@ module.exports = function () {
             return cb();
         }
         if (file.isBuffer()) {
-            content = file.contents.toString('utf8');
-            content = globhtml(content, file.base);
+            content = file.contents.toString(enc);
+            content = globhtml(content, file.base, opts);
             file.contents = new Buffer(content);
         }
         this.push(file);
